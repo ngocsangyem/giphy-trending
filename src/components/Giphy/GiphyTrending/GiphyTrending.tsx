@@ -1,27 +1,11 @@
 import { GiphyFetch } from '@giphy/js-fetch-api';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { GifOverlayProps, Grid } from '@giphy/react-components';
+import { Grid } from '@giphy/react-components';
 import { useMeasure } from 'react-use';
 import ResizeObserver from 'react-resize-observer';
+import GiphyItemOverlay from '../GiphyItemOverlay/GiphyItemOverlay';
 
 const giphyFetch = new GiphyFetch(import.meta.env.VITE_GIPHY_API as string);
-
-const Overlay = ({ gif, isHovered }: GifOverlayProps) => {
-	return (
-		<div
-			className={`overlay absolute inset-0 transition ${
-				isHovered ? 'opacity-100' : 'opacity-0'
-			}`}
-		>
-			<button className="bg-transparent border-0 p-0 absolute top-2 right-2 z-10">
-			</button>
-			<div className="absolute inset-0 flex bg-overlay items-end justify-center p-2 text-white font-semibold">
-				<span>{gif.title}</span>
-			</div>
-		</div>
-	);
-};
 
 const GiphyTrending = () => {
 	const [columns, setColumns] = useState(4);
@@ -39,7 +23,7 @@ const GiphyTrending = () => {
 				width={containerWidth}
 				columns={columns}
 				gutter={6}
-				overlay={Overlay}
+				overlay={GiphyItemOverlay}
 			/>
 			<ResizeObserver
 				onResize={({ width }) => {
