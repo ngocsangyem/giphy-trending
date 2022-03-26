@@ -30,8 +30,15 @@
 	},
 	"homepage": "https://github.com/ngocsangyem/giphy-trending#readme",
 	"dependencies": {
+		"@testing-library/jest-dom": "^5.16.3",
+		"@testing-library/react": "^12.1.4",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/redux-mock-store": "^1.0.3",
+		"jest": "^27.5.1",
 		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
+		"react-dom": "^17.0.2",
+		"react-router": "^6.2.2",
+		"redux-mock-store": "^1.5.4"
 	},
 	"devDependencies": {
 		"@types/react": "^17.0.33",
@@ -39,5 +46,19 @@
 		"@vitejs/plugin-react": "^1.0.7",
 		"typescript": "^4.5.4",
 		"vite": "^2.8.0"
+	},
+	"jest": {
+		"testEnvironment": "jsdom",
+		"setupFilesAfterEnv": [
+			"<rootDir>/jest-setup.ts"
+		],
+		"collectCoverageFrom": [
+			"src/**/*.{ts,tsx,js,jsx}",
+			"!src/**/*.d.ts",
+			"!src/**/*.interface.ts"
+		],
+		"moduleNameMapper": {
+			"\\.(css|scss)$": "identity-obj-proxy"
+		}
 	}
 }
