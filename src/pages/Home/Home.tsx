@@ -1,12 +1,11 @@
+import Search from "@/components/Search/Search";
+import { Fragment } from "react";
+
 const Home = () => {
 	return (
-		<div>
-			<h1>Home</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-				voluptatum.
-			</p>
-		</div>
+		<Fragment>
+			<Search></Search>
+		</Fragment>
 	);
 };
 
