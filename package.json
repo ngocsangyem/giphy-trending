@@ -50,6 +50,7 @@
 	"devDependencies": {
 		"@types/react": "^17.0.33",
 		"@types/react-dom": "^17.0.10",
+		"@types/throttle-debounce": "^2.1.0",
 		"@vitejs/plugin-react": "^1.0.7",
 		"autoprefixer": "^10.4.4",
 		"postcss": "^8.4.12",
