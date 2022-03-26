@@ -29,6 +29,12 @@ npm install
 
 ## Usage
 
+Go to [Giphy Developer](https://developers.giphy.com/) and create a new API key. Then create your `.env` file with the following content:
+
+```sh
+GIPHY_API=<YOUR_API_KEY>
+```
+
 ```sh
 npm run dev
 ```
@@ -39,7 +45,7 @@ npm run dev
 npm run test
 ```
 
-### Eun test with coverage
+### Run test with coverage
 
 ```sh
 npm run test -- --coverage
