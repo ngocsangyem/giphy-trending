@@ -19,7 +19,7 @@
 
 ### 🏠 [Homepage](https://github.com/ngocsangyem/giphy-trending#readme)
 
-### ✨ [Demo](https://github.com/ngocsangyem/giphy-trending)
+### ✨ [Demo](https://giphy-trending.vercel.app/)
 
 ## Install
 
