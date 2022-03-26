@@ -39,6 +39,12 @@ npm run dev
 npm run test
 ```
 
+### Eun test with coverage
+
+```sh
+npm run test -- --coverage
+```
+
 ## Author
 
 👤 **ngocsangyem**
