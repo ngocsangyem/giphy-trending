@@ -1,21 +1,24 @@
-import { Link } from 'react-router-dom';
+import logo from '../../assets/img/Giphy-logo.svg';
+import CustomLink from './CustomLink/CustomLink';
 
 const Header = () => {
 	return (
 		<header className="header">
-			<div className="header__menu">
-				<ul className="header__menu-list">
-					<li className="header__menu-item">
-						<Link to="/">Home</Link>
+			<div className="my-10 w-40 mx-auto">
+				<img src={logo} alt="giphy logo" />
+			</div>
+			<nav className="mb-5">
+				<ul className="flex justify-center">
+					<li>
+						<CustomLink to="/">Home</CustomLink>
 					</li>
-					<li className="header__menu-item">
-						<Link to="/about">Your favorite</Link>
-					</li>
-					<li className="header__menu-item">
-						<Link to="/contact">Contact</Link>
+					<li>
+						<CustomLink to="/favorite">Favorite</CustomLink>
 					</li>
 				</ul>
-			</div>
+			</nav>
 		</header>
 	);
 };
+
+export default Header;
