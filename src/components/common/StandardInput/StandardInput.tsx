@@ -4,6 +4,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	name: string;
 	label?: string;
 	type: string;
+	value: string;
 }
 
 const StandardInput: FC<InputProps> = ({
@@ -11,6 +12,7 @@ const StandardInput: FC<InputProps> = ({
 	label,
 	type = 'text',
 	onChange,
+	value,
 	...rest
 }) => {
 	return (
@@ -44,6 +46,8 @@ const StandardInput: FC<InputProps> = ({
 					"
 				id={name}
 				name={name}
+				value={value}
+				onChange={onChange}
 				{...rest}
 			/>
 		</div>
