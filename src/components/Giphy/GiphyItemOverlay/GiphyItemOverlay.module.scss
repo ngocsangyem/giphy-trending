@@ -48,9 +48,6 @@ $sparkle-r: 0.5 * $sparkle-d;
 
 .like-btn {
 	[id*='toggle-heart-'] {
-		position: absolute;
-		left: -100vw;
-
 		&:checked + label {
 			color: #e2264d;
 			filter: none;
