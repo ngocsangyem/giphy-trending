@@ -1,12 +1,13 @@
-import { Fragment } from "react";
-import GiphyTrending from "@/components/Giphy/GiphyTrending/GiphyTrending";
-import Search from "@/components/Search/Search";
+import { Fragment } from 'react';
+import Search from '@/components/Search/Search';
+import { SearchContextProvider } from '@/context/search-context/search-context';
 
 const Home = () => {
 	return (
 		<Fragment>
-			<Search></Search>
-			<GiphyTrending></GiphyTrending>
+			<SearchContextProvider apiKey={import.meta.env.VITE_GIPHY_API as string}>
+				<Search />
+			</SearchContextProvider>
 		</Fragment>
 	);
 };
