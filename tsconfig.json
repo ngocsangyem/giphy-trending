@@ -24,7 +24,10 @@
 			"@/pages/*": ["./src/pages/*"],
 			"@/routes/*": ["./src/routes/*"],
 			"@/hooks/*": ["./src/hooks/*"],
-			"@/store/*": ["./src/store/*"]
+			"@/store/*": ["./src/store/*"],
+			"@/context/*": ["./src/context/*"],
+			"@/reducers/*": ["./src/reducers/*"],
+			"@/@types/*": ["./src/@types/*"]
 		}
 	},
 	"include": ["src"],
