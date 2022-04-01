@@ -1,12 +1,7 @@
-import { FavoriteContextProvider } from "@/context/favorite-context/favorite-context";
-import GiphyList from "@/components/Giphy/GiphyList/GiphyList";
+import GiphyList from '@/components/Giphy/GiphyList/GiphyList';
 
 const GiphyFavorite = () => {
-	return (
-		<FavoriteContextProvider>
-			<GiphyList />
-		</FavoriteContextProvider>
-	)
-}
+	return <GiphyList />;
+};
 
 export default GiphyFavorite;

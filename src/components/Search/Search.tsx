@@ -8,26 +8,16 @@ import GiphyItemOverlay from '../Giphy/GiphyItemOverlay/GiphyItemOverlay';
 import loadingGif from '@/assets/img/nyancat-rainbow-cat.gif';
 import { IGif } from '@giphy/js-types';
 import { GifClickType } from '@/@types/gif';
-import { FavoriteContext } from '@/context/favorite-context/favorite-context';
+import { SearchActionTypes } from '@/@types/search';
 
 const Search = () => {
-	const { fetchGifs, searchKey, isFetching } = useContext(SearchContext);
-	const { addFavorite, removeFavorite } = useContext(FavoriteContext);
+	const { fetchGifs, searchKey, isFetching, dispatch } = useContext(SearchContext);
 	const [columns, setColumns] = useState(4);
 	const [ref, { width: containerWidth }] = useMeasure<HTMLDivElement>();
 
 	const handleLike = ({ gif, e }: GifClickType) => {
 		if ((e.target as HTMLInputElement).id === `toggle-heart-${gif.id}`) {
-			const isChecked = (e.target as HTMLInputElement).checked;
-			if (isChecked) {
-				console.log('checked');
-
-				addFavorite(gif);
-			} else {
-				console.log('unchecked');
-
-				removeFavorite(gif);
-			}
+			dispatch({ type: SearchActionTypes.TOGGLE, id: gif.id });
 		}
 	};
 

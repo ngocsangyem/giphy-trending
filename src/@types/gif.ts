@@ -5,3 +5,7 @@ export type GifClickType = {
 	gif: IGif;
 	e: SyntheticEvent<HTMLElement, Event>;
 };
+
+export interface IGifItem extends IGif {
+	liked: boolean;
+}

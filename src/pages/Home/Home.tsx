@@ -5,7 +5,9 @@ import { SearchContextProvider } from '@/context/search-context/search-context';
 const Home = () => {
 	return (
 		<Fragment>
-			<SearchContextProvider apiKey={import.meta.env.VITE_GIPHY_API as string}>
+			<SearchContextProvider
+				apiKey={import.meta.env.VITE_GIPHY_API as string}
+			>
 				<Search />
 			</SearchContextProvider>
 		</Fragment>

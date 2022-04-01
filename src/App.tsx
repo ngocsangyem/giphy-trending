@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import GiphyFavorite from './pages/GiphyFavorite/GiphyFavorite';

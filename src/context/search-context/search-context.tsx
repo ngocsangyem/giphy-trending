@@ -3,12 +3,21 @@ import {
 	ReactNode,
 	useCallback,
 	useMemo,
+	useReducer,
 	useState,
 } from 'react';
 import { GifsResult, GiphyFetch } from '@giphy/js-fetch-api';
-import { SearchContextProviderProps, SearchContextType } from '@/@types/search';
+import {
+	SearchActionTypes,
+	SearchContextProviderProps,
+	SearchContextType,
+	SearchStateType,
+} from '@/@types/search';
+import { searchReducer } from '@/reducers/search/searchReducer';
 
-const SearchContext = createContext({} as SearchContextType);
+const defaultSearchState: SearchStateType = {
+	giphyList: [],
+};
 
 const emptyGifsResult = {
 	data: [],
@@ -16,12 +25,27 @@ const emptyGifsResult = {
 	meta: { status: 200, msg: 'OK', response_id: '' },
 };
 
+const SearchContext = createContext<SearchContextType>({
+	apiKey: '',
+	setSearch: () => {},
+	term: '',
+	isFetching: true,
+	searchKey: '',
+	fetchGifs: () => Promise.resolve(emptyGifsResult),
+	giphyList: [],
+	dispatch: () => {},
+});
+
 const SearchContextProvider = ({
 	children,
 	apiKey,
 	initialTerm = '',
 	shouldDefaultToTrending = true,
 }: SearchContextProviderProps) => {
+	const [searchState, dispatchSearchAction] = useReducer(
+		searchReducer,
+		defaultSearchState
+	);
 	const giphyFetch = useMemo(() => new GiphyFetch(apiKey), [apiKey]);
 	const [term, setTerm] = useState<string>(initialTerm);
 	const [isFetching, setIsFetching] = useState(false);
@@ -41,6 +65,13 @@ const SearchContextProvider = ({
 				result = await giphyFetch.trending({ offset });
 			}
 			setIsFetching(false);
+			dispatchSearchAction({
+				type: SearchActionTypes.STORE,
+				payload: (result.data || []).map((gif) => ({
+					...gif,
+					liked: false,
+				})),
+			});
 			return result;
 		},
 		[giphyFetch, term]
@@ -55,6 +86,8 @@ const SearchContextProvider = ({
 				isFetching,
 				fetchGifs,
 				searchKey,
+				giphyList: searchState.giphyList,
+				dispatch: dispatchSearchAction,
 			}}
 		>
 			{children}
