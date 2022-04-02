@@ -1,10 +1,9 @@
 import { GifOverlayProps } from '@giphy/react-components';
-import styles from './GiphyItemOverlay.module.scss';
 
-const GiphyItemOverlay = ({ gif, isHovered, onClick }: GifOverlayProps) => {
+const GiphyItemOverlay = ({ gif, isHovered }: GifOverlayProps) => {
 	return (
 		<div
-			className={`overlay absolute inset-0 transition ${
+			className={`overlay cursor-pointer absolute inset-0 transition ${
 				isHovered ? 'opacity-100' : 'opacity-0'
 			}`}
 		>
