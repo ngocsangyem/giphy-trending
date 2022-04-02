@@ -1,32 +1,17 @@
-import { useContext, Fragment, useState, SyntheticEvent } from 'react';
-import { GifOverlayProps, Grid } from '@giphy/react-components';
+import { useContext, Fragment, useState } from 'react';
+import { Grid } from '@giphy/react-components';
 import ResizeObserver from 'react-resize-observer';
 import { useMeasure } from '@ngocsangyem/react-use';
 import { SearchContext } from '@/context/search-context/search-context';
 import SearchBar from './SearchBar/SearchBar';
 import GiphyItemOverlay from '../Giphy/GiphyItemOverlay/GiphyItemOverlay';
 import loadingGif from '@/assets/img/nyancat-rainbow-cat.gif';
-import { IGif } from '@giphy/js-types';
-import { GifClickType } from '@/@types/gif';
-import { SearchActionTypes } from '@/@types/search';
+import { GifsResult } from '@giphy/js-fetch-api';
 
 const Search = () => {
 	const { fetchGifs, searchKey, isFetching, dispatch } = useContext(SearchContext);
 	const [columns, setColumns] = useState(4);
 	const [ref, { width: containerWidth }] = useMeasure<HTMLDivElement>();
-
-	const handleLike = ({ gif, e }: GifClickType) => {
-		if ((e.target as HTMLInputElement).id === `toggle-heart-${gif.id}`) {
-			dispatch({ type: SearchActionTypes.TOGGLE, id: gif.id });
-		}
-	};
-
-	const handleGifClick = (
-		gif: IGif,
-		e: SyntheticEvent<HTMLElement, Event>
-	) => {
-		handleLike({ gif, e });
-	};
 
 	return (
 		<Fragment>
@@ -38,12 +23,11 @@ const Search = () => {
 					</div>
 				)}
 				<Grid
-					onGifClick={handleGifClick}
 					width={containerWidth}
 					key={searchKey}
 					columns={columns}
 					noLink={true}
-					fetchGifs={fetchGifs}
+					fetchGifs={fetchGifs as (offset: number) => Promise<GifsResult>}
 					overlay={GiphyItemOverlay}
 				/>
 				<ResizeObserver

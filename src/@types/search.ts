@@ -1,6 +1,5 @@
 import { Dispatch, ReactNode } from "react";
 import { GifsResult } from "@giphy/js-fetch-api";
-import { IGif } from '@giphy/js-types';
 import { IGifItem } from "./gif";
 
 export type SearchBarType = {
