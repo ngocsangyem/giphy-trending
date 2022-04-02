@@ -75,7 +75,8 @@
 			"!src/**/*.interface.ts"
 		],
 		"moduleNameMapper": {
-			"\\.(css|scss)$": "identity-obj-proxy"
+			"\\.(css|scss)$": "identity-obj-proxy",
+			"^@/(.*)$": "<rootDir>/src/$1"
 		}
 	}
 }
