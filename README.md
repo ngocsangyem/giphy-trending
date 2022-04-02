@@ -32,7 +32,7 @@ npm install
 Go to [Giphy Developer](https://developers.giphy.com/) and create a new API key. Then create your `.env` file with the following content:
 
 ```sh
-GIPHY_API=<YOUR_API_KEY>
+VITE_GIPHY_API=<YOUR_API_KEY>
 ```
 
 ```sh
