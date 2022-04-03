@@ -1,4 +1,4 @@
-import { useContext, Fragment, useState } from 'react';
+import { useContext, Fragment, useState, SyntheticEvent } from 'react';
 import { Grid } from '@giphy/react-components';
 import ResizeObserver from 'react-resize-observer';
 import { useMeasure } from '@ngocsangyem/react-use';
@@ -19,7 +19,24 @@ const Search = () => {
 	const handleCloseModal = () => {
 		setModalGif(null);
 	};
-	
+
+	const handleGifClick = (
+		gif: IGif,
+		e: SyntheticEvent<HTMLElement, Event>
+	) => {
+		e.preventDefault();
+		setModalGif(gif);
+	};
+
+	const handleResize = ({ width }: { width: number }) => {
+		if (width < 768) {
+			setColumns(2);
+		} else if (width < 992) {
+			setColumns(3);
+			setColumns(4);
+		}
+	};
+
 	return (
 		<Fragment>
 			<SearchBar />
@@ -30,11 +47,7 @@ const Search = () => {
 					</div>
 				)}
 				<Grid
-					onGifClick={(gif, e) => {
-						console.log('gif', gif);
-						e.preventDefault();
-						setModalGif(gif);
-					}}
+					onGifClick={handleGifClick}
 					width={containerWidth}
 					key={searchKey}
 					columns={columns}
@@ -43,33 +56,34 @@ const Search = () => {
 						fetchGifs as (offset: number) => Promise<GifsResult>
 					}
 					overlay={GiphyItemOverlay}
+					className="grid-item"
 				/>
-				<ResizeObserver
-					onResize={({ width }) => {
-						if (width < 768) {
-							setColumns(2);
-						} else if (width < 992) {
-							setColumns(3);
-						} else {
-							setColumns(4);
-						}
-					}}
-				/>
+				<ResizeObserver onResize={handleResize} />
 			</div>
 			{modalGif && (
 				<Modal title={modalGif.title} onClose={handleCloseModal}>
-					<div className='flex flex-col md:flex-row'>
-					<img
-						width={modalGif.images.original.width}
-						height={modalGif.images.original.height}
-						src={modalGif.images.original.url}
-						alt={modalGif.title}
-					/>
-					<div className='mt-4 md:ml-4 md:mt-0'>
-						<span className='block'>username: {modalGif.username ? modalGif.username : 'Unknown'}</span>
-						<span className='block'>rating: {modalGif.rating}</span>
-						<span className='block'>Upload date: {modalGif.import_datetime.split(' ')[0]}</span>
-					</div>
+					<div className="flex flex-col md:flex-row">
+						<img
+							width={modalGif.images.original.width}
+							height={modalGif.images.original.height}
+							src={modalGif.images.original.url}
+							alt={modalGif.title}
+						/>
+						<div className="mt-4 md:ml-4 md:mt-0">
+							<span className="block">
+								username:{' '}
+								{modalGif.username
+									? modalGif.username
+									: 'Unknown'}
+							</span>
+							<span className="block">
+								rating: {modalGif.rating}
+							</span>
+							<span className="block">
+								Upload date:{' '}
+								{modalGif.import_datetime.split(' ')[0]}
+							</span>
+						</div>
 					</div>
 				</Modal>
 			)}

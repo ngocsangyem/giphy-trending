@@ -52,12 +52,14 @@
 		"@babel/preset-env": "^7.16.11",
 		"@babel/preset-react": "^7.16.7",
 		"@babel/preset-typescript": "^7.16.7",
+		"@testing-library/react-hooks": "^7.0.2",
 		"@types/react": "^17.0.33",
 		"@types/react-dom": "^17.0.10",
 		"@types/styled-components": "^5.1.24",
 		"@types/throttle-debounce": "^2.1.0",
 		"@vitejs/plugin-react": "^1.0.7",
 		"autoprefixer": "^10.4.4",
+		"jest-transform-stub": "^2.0.0",
 		"postcss": "^8.4.12",
 		"sass": "^1.49.9",
 		"tailwindcss": "^3.0.23",
@@ -77,6 +79,7 @@
 		],
 		"moduleNameMapper": {
 			"\\.(css|scss)$": "identity-obj-proxy",
+			"\\.(jpg|jpeg|png|svg|gif)$": "jest-transform-stub",
 			"^@/(.*)$": "<rootDir>/src/$1"
 		}
 	}

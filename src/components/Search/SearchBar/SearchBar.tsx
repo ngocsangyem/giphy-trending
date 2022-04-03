@@ -11,6 +11,15 @@ const SearchBar = ({ clear = false }: SearchBarType) => {
 	const [debouncedTerm, setDebouncedTerm] = useState<string>(term);
 	const [isCleared, setCleared] = useState(clear);
 
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { value } = e.target;
+
+		if (!isCleared || value.trim() !== '') {
+			setCleared(false);
+			setDebouncedTerm(e.target.value);
+		}
+	};
+
 	useDebounce(() => setSearch(debouncedTerm), SEARCH_DEBOUNCE, [
 		debouncedTerm,
 	]);
@@ -30,13 +39,7 @@ const SearchBar = ({ clear = false }: SearchBarType) => {
 				type="text"
 				placeholder="Search your favorite gifs here..."
 				value={isCleared ? '' : debouncedTerm}
-				onChange={(e) => {
-					const { value } = e.target;
-					if (!isCleared || value.trim() !== '') {
-						setCleared(false);
-						setDebouncedTerm(e.target.value);
-					}
-				}}
+				onChange={handleInputChange}
 			></StandardInput>
 		</div>
 	);
