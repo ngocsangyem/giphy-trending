@@ -21,6 +21,19 @@
 
 ### ✨ [Demo](https://giphy-trending.vercel.app/)
 
+## Features
+
+|                         |     |
+| ----------------------- | --- |
+| React                   | ✅  |
+| List Giphy              | ✅  |
+| Search Gif              | ✅  |
+| SHow detail             | ✅  |
+| New gif when scroll dow | ✅  |
+| Context API             | ✅  |
+| Testing                 | ✅  |
+| Upload gif              | ❌  |
+
 ## Install
 
 ```sh
@@ -55,7 +68,7 @@ npm run test -- --coverage
 
 👤 **ngocsangyem**
 
-* Website: https://www.ngocsangyem.dev/
+* Website: <https://www.ngocsangyem.dev/>
 * Twitter: [@ngocsangyem](https://twitter.com/ngocsangyem)
 * Github: [@ngocsangyem](https://github.com/ngocsangyem)
 * LinkedIn: [@ngocsangyem](https://linkedin.com/in/ngocsangyem)
@@ -63,10 +76,6 @@ npm run test -- --coverage
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/ngocsangyem/giphy-trending/issues). You can also take a look at the [contributing guide](https://github.com/ngocsangyem/giphy-trending/blob/main/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
