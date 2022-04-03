@@ -16,7 +16,7 @@ describe('Search context', () => {
 	const TestComponent = () => {
 		const { giphyList, isFetching, setSearch } = useContext(SearchContext);
 		return (
-			<div>
+			<div>``
 				{isFetching && <div role="user">{giphyList[0].title}</div>}
 				<input type="text" onChange={() => setSearch} />
 			</div>
