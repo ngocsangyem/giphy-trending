@@ -8,7 +8,18 @@ module.exports = {
 				},
 			},
 		],
-		['@babel/preset-react', { runtime: "automatic" }],
+		['@babel/preset-react', { runtime: 'automatic' }],
 		'@babel/preset-typescript',
+	],
+	plugins: [
+		function () {
+			return {
+				visitor: {
+					MetaProperty(path) {
+						path.replaceWithSourceString('process');
+					},
+				},
+			};
+		},
 	],
 };

@@ -1,12 +1,10 @@
-import React, { useState as useStateMock } from 'react';
-import { render, screen, createEvent, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Search from '../Search';
-import userEvent from '@testing-library/user-event';
 
-// jest.mock('@giphy/react-components', () => ({
-// 	...jest.requireActual('@giphy/react-components'),
-// 	Grid: jest.fn(() => <div>Grid</div>),
-// }));
+jest.mock('@giphy/react-components', () => ({
+	...jest.requireActual('@giphy/react-components'),
+	Grid: jest.fn(({onGifClick}) => <button onClick={onGifClick}>Grid</button>),
+}));
 
 describe('Search', () => {
 	it('should render search bar', () => {
@@ -16,10 +14,10 @@ describe('Search', () => {
 		).toBeInTheDocument();
 	});
 
-	it('should run handleGifClick when gif is clicked', () => {
+	it('should run handleGifClick when gif is clicked', async () => {
 		// const handleGifClick = jest.fn();
 		const { container } = render(<Search />);
-		fireEvent.click(container.querySelector('.grid-item'));
-		screen.debug(container)
+		const button = container.querySelector('button')
+		fireEvent.keyDown(button as Element);
 	});
 });

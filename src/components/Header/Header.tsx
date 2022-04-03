@@ -1,5 +1,4 @@
 import logo from '../../assets/img/Giphy-logo.svg';
-import CustomLink from './CustomLink/CustomLink';
 
 const Header = () => {
 	return (

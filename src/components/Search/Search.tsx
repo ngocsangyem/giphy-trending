@@ -24,6 +24,7 @@ const Search = () => {
 		gif: IGif,
 		e: SyntheticEvent<HTMLElement, Event>
 	) => {
+		console.log('oke');
 		e.preventDefault();
 		setModalGif(gif);
 	};
@@ -56,7 +57,6 @@ const Search = () => {
 						fetchGifs as (offset: number) => Promise<GifsResult>
 					}
 					overlay={GiphyItemOverlay}
-					className="grid-item"
 				/>
 				<ResizeObserver onResize={handleResize} />
 			</div>
